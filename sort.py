@@ -39,9 +39,9 @@ for file in unsorted_files_list:
     else:
         sorted_status = False
         for index, item in enumerate(result):
-            if result[index][1].isdigit() and int(result[index][1]) in comp_roster:
+            if result[index][1].isdigit() and result[index][1] in comp_roster:
                 answer_list.append(result[index][1])
-                shutil.copy(f"{cwd}\\unsorted_demo\\{file}", f"{cwd}\\sorted_teams\\{int(result[index][1])}\\{file}")
+                shutil.copy(f"{cwd}\\unsorted_demo\\{file}", f"{cwd}\\sorted_teams\\{result[index][1]}\\{file}")
                 sorted_status = True
             else:
                 print(f"discarding: {result[index][1]}")

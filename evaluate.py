@@ -14,6 +14,7 @@ import shutil
 
 
 cwd = os.getcwd()
+print("Starting evaluation")
 
 # Evaluate Correct
 sfll = os.listdir(f"{cwd}\\sorted_teams\\")
