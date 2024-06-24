@@ -28,12 +28,17 @@ for folder in sfll:
 
 # Results
 unsorted_files = os.listdir(f"{cwd}\\unsorted_demo\\")
-atr = (len(unsorted_files)-len(os.listdir(f"{cwd}\\unidentifiable_demo\\")))/len(unsorted_files)
+correct = len(unsorted_files)-len(os.listdir(f"{cwd}\\unidentifiable_demo\\"))
+atr = (correct)/len(unsorted_files)
 overall_acc = (c_counter/len(unsorted_files))
 car = overall_acc/atr
+print("---Summary Start---")
 print(f"Attempted Rate: {atr}")
-print (f"AR(Fraction): {len(unsorted_files)-len(os.listdir(f"{cwd}\\unidentifiable_demo\\"))}/{len(unsorted_files)}")
+print (f"AR(Fraction): {correct}/{len(unsorted_files)}")
+print("---")
 print(f"Correct Attempted: {car}")
-print(f"CA (Fraction): {c_counter}/{len(unsorted_files)}")
+print(f"CA (Fraction): {correct}/{c_counter}")
+print("---")
 print(f"Overall Correct: {overall_acc}")
-print(f"OC (Fraction): {overall_acc}/{atr}")
+print(f"OC (Fraction): {c_counter}/{len(unsorted_files)}")
+print("---Summary End---")
