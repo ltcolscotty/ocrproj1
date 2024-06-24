@@ -1,3 +1,7 @@
+'''
+Roster generator and folder resetting module
+'''
+
 import os
 
 import torch
@@ -11,16 +15,6 @@ import shutil
 import random
 
 cwd = os.getcwd()
-
-if torch.cuda.is_available():
-    reader = easyocr.Reader(['en'], gpu=True)
-    print(f"GPU in use: {torch.cuda.get_device_name(0)}")
-
-else:
-    reader = easyocr.Reader(['en'], gpu=False)
-    print("using CPU, CUDA not available")
-
-#ROSTER GENERATOR & FOLDER RESETTER
 
 #Number of competitors
 comp_num = 35
