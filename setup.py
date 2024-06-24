@@ -4,9 +4,6 @@ Roster generator and folder resetting module
 
 import os
 
-import torch
-import easyocr
-import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 from pathlib import Path

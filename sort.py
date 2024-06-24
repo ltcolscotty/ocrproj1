@@ -50,19 +50,3 @@ for file in unsorted_files_list:
             shutil.copy(f"{cwd}\\unsorted_demo\\{file}", f"{cwd}\\unidentifiable_demo\\{file}")
 
 print("Finished sorting!")
-
-# Clear files in unsorted folder
-unsorted_files = os.listdir(f"{cwd}\\unsorted_demo\\")
-if len(unsorted_files) > 0:
-    for filename in unsorted_files:
-        file_path = os.path.join(f"{cwd}\\unsorted_demo\\", filename)
-        try:
-            if os.path.isfile(file_path) or os.path.islink(file_path):
-                os.unlink(file_path)
-            elif os.path.isdir(file_path):
-                shutil.rmtree(file_path)
-        except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
-    print("Successfully cleared folder 'unsorted files'")
-else:
-    print("No files removed for unsorted files: Length = 0")
