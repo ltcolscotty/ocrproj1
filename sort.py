@@ -7,9 +7,6 @@ cwd = os.getcwd()
 import torch
 import easyocr
 import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-from pathlib import Path
 import shutil
 
 comp_roster = os.listdir(f"{cwd}\\sorted_teams\\")

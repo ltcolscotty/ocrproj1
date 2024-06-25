@@ -11,6 +11,8 @@ import numpy as np
 from matplotlib import pyplot as plt
 from pathlib import Path
 
+import time
+
 file = input("Input file name relative to image_library: ")
 
 library = os.listdir(f"{cwd}\image_library\\")
@@ -73,4 +75,6 @@ else:
                 3,
             )
 
-        img.view()
+img.imshow()
+        
+time.wait(2)
