@@ -4,15 +4,6 @@ evaluation module
 
 import os
 
-import torch
-import easyocr
-import cv2
-import numpy as np
-from matplotlib import pyplot as plt
-from pathlib import Path
-import shutil
-
-
 cwd = os.getcwd()
 print("Starting evaluation")
 
