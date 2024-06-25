@@ -1,6 +1,7 @@
-'''demo module'''
+"""demo module"""
 
 import os
+
 cwd = os.getcwd()
 
 import torch
@@ -15,22 +16,22 @@ file = input("Input file name relative to image_library: ")
 library = os.listdir(f"{cwd}\image_library\\")
 
 if torch.cuda.is_available():
-    reader = easyocr.Reader(['en'], gpu=True)
+    reader = easyocr.Reader(["en"], gpu=True)
     print(f"GPU in use: {torch.cuda.get_device_name(0)}")
 
 else:
-    reader = easyocr.Reader(['en'], gpu=False)
+    reader = easyocr.Reader(["en"], gpu=False)
     print("using CPU, CUDA not available")
 
-#Set image here
+# Set image here
 if file in library:
-    IMAGE_PATH = (f"{cwd}\image_library\\{file}")
+    IMAGE_PATH = f"{cwd}\image_library\\{file}"
 else:
     print("File not recognized, using default image. Remeber to include file suffix.")
-    IMAGE_PATH = (f"{cwd}\image_library\\1_0.webp")
+    IMAGE_PATH = f"{cwd}\image_library\\1_0.webp"
 result = reader.readtext(IMAGE_PATH)
 
-#Initiate list for result collection
+# Initiate list for result collection
 bottom_right_list = list()
 top_left_list = list()
 index_list = list()
@@ -38,7 +39,7 @@ answer_list = list()
 
 img = cv2.imread(IMAGE_PATH)
 
-#Print results
+# Print results
 if not result:
     print("Empty Results List")
 else:
@@ -49,14 +50,27 @@ else:
             answer_list.append(result[index][1])
         else:
             print(f"discarding: {result[index][1]}")
-        
-        #Display Settings
+
+        # Display Settings
         font = cv2.FONT_HERSHEY_SIMPLEX
-        
-        #Add labels
+
+        # Add labels
         for idx, answer in enumerate(answer_list):
-            img = cv2.rectangle(img, tuple(map(int, top_left_list[idx])), tuple(map(int, bottom_right_list[idx])), (0, 225, 0), 5)
-            img = cv2.putText(img, answer_list[idx], tuple(map(int, top_left_list[idx])), font, 1.5, (255, 255, 255), 3)
+            img = cv2.rectangle(
+                img,
+                tuple(map(int, top_left_list[idx])),
+                tuple(map(int, bottom_right_list[idx])),
+                (0, 225, 0),
+                5,
+            )
+            img = cv2.putText(
+                img,
+                answer_list[idx],
+                tuple(map(int, top_left_list[idx])),
+                font,
+                1.5,
+                (255, 255, 255),
+                3,
+            )
 
         img.view()
-

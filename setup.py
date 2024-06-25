@@ -1,6 +1,6 @@
-'''
+"""
 Roster generator and folder resetting module
-'''
+"""
 
 import os
 
@@ -13,7 +13,7 @@ import random
 
 cwd = os.getcwd()
 
-#Number of competitors
+# Number of competitors
 comp_num = 35
 comp_roster = list()
 file_list = os.listdir(f"{cwd}\image_library\\")
@@ -46,7 +46,7 @@ if len(unsorted_files) > 0:
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
         except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            print("Failed to delete %s. Reason: %s" % (file_path, e))
     print("Successfully cleared folder 'unsorted files'")
 else:
     print("No files removed for unsorted files: Length = 0")
@@ -62,7 +62,7 @@ if len(sorted_files) > 0:
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
         except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            print("Failed to delete %s. Reason: %s" % (file_path, e))
     print("Successfully cleared folder 'sorted files'")
 else:
     print("No files removed for sorted folder: Length = 0")
@@ -78,7 +78,7 @@ if len(unidentifiable_files) > 0:
             elif os.path.isdir(file_path):
                 shutil.rmtree(file_path)
         except Exception as e:
-            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            print("Failed to delete %s. Reason: %s" % (file_path, e))
     print("Successfully cleared folder 'unidentifiable'")
 else:
     print("No files removed for unidentifiable folder: Length = 0")
