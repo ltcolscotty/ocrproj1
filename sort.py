@@ -39,6 +39,7 @@ for file in unsorted_files_list:
     else:
         sorted_status = False
         for index, item in enumerate(result):
+            result[index][1] = result[index][1].replace(' ', '')
             if result[index][1].isdigit() and result[index][1] in comp_roster:
                 answer_list.append(result[index][1])
                 shutil.copy(
