@@ -46,7 +46,7 @@ if not result:
     print("Empty Results List")
 else:
     for index, item in enumerate(result):
-        if result[index][1].isdigit():
+        if str(result[index][1]).replace(' ', '').isdigit():
             bottom_right_list.append(tuple(result[index][0][2]))
             top_left_list.append(tuple(result[index][0][0]))
             answer_list.append(result[index][1])
