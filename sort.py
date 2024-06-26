@@ -39,12 +39,12 @@ for file in unsorted_files_list:
     else:
         sorted_status = False
         for index, item in enumerate(result):
-            result[index][1] = result[index][1].replace(' ', '')
-            if result[index][1].isdigit() and result[index][1] in comp_roster:
-                answer_list.append(result[index][1])
+            result[index][1]
+            if str(result[index][1]).replace(' ', '').isdigit() and str(result[index][1]).replace(' ','') in comp_roster:
+                answer_list.append(str(result[index][1]).replace(' ',''))
                 shutil.copy(
                     f"{cwd}\\unsorted_demo\\{file}",
-                    f"{cwd}\\sorted_teams\\{result[index][1]}\\{file}",
+                    f"{cwd}\\sorted_teams\\{str(result[index][1]).replace(' ','')}\\{file}",
                 )
                 sorted_status = True
             else:
