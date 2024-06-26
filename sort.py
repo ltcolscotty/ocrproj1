@@ -36,14 +36,18 @@ for file in unsorted_files_list:
     if not result:
         print("Empty Results List")
         shutil.copy(
-            f"{cwd}\\{sorter_settings.unsorted}\\{file}", f"{cwd}\\{sorter_settings.non_IDable}\\{file}"
+            f"{cwd}\\{sorter_settings.unsorted}\\{file}",
+            f"{cwd}\\{sorter_settings.non_IDable}\\{file}",
         )
     else:
         sorted_status = False
         for index, item in enumerate(result):
             result[index][1]
-            if str(result[index][1]).replace(' ', '').isdigit() and str(result[index][1]).replace(' ','') in comp_roster:
-                answer_list.append(str(result[index][1]).replace(' ',''))
+            if (
+                str(result[index][1]).replace(" ", "").isdigit()
+                and str(result[index][1]).replace(" ", "") in comp_roster
+            ):
+                answer_list.append(str(result[index][1]).replace(" ", ""))
                 shutil.copy(
                     f"{cwd}\\{sorter_settings.unsorted}\\{file}",
                     f"{cwd}\\{sorter_settings.sorted_destination}\\{str(result[index][1]).replace(' ','')}\\{file}",
@@ -54,7 +58,8 @@ for file in unsorted_files_list:
 
         if not sorted_status:
             shutil.copy(
-                f"{cwd}\\{sorter_settings.unsorted}\\{file}", f"{cwd}\\{sorter_settings.non_IDable}\\{file}"
+                f"{cwd}\\{sorter_settings.unsorted}\\{file}",
+                f"{cwd}\\{sorter_settings.non_IDable}\\{file}",
             )
 
 print("Finished sorting!")

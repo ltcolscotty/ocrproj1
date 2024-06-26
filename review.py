@@ -25,7 +25,7 @@ if len(non_id_files) > 0:
     print(f"Reviewing: {len(non_id_files)} files")
 
     for file in non_id_files:
-        
+
         print(f"File: {file}")
 
         result = reader.readtext(f"{cwd}//{sorter_settings.non_IDable}//{file}")
@@ -43,7 +43,7 @@ if len(non_id_files) > 0:
             print("Empty Results List")
         else:
             for index, item in enumerate(result):
-                if str(result[index][1]).replace(' ', '').isdigit():
+                if str(result[index][1]).replace(" ", "").isdigit():
                     bottom_right_list.append(tuple(result[index][0][2]))
                     top_left_list.append(tuple(result[index][0][0]))
                     answer_list.append(result[index][1])

@@ -20,7 +20,9 @@ for folder in sfll:
 
 # Results
 unsorted_files = os.listdir(f"{cwd}\\{sorter_settings.unsorted}\\")
-correct = len(unsorted_files) - len(os.listdir(f"{cwd}\\{sorter_settings.non_IDable}\\"))
+correct = len(unsorted_files) - len(
+    os.listdir(f"{cwd}\\{sorter_settings.non_IDable}\\")
+)
 atr = (correct) / len(unsorted_files)
 overall_acc = c_counter / len(unsorted_files)
 car = overall_acc / atr

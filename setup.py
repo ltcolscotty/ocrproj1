@@ -1,6 +1,7 @@
 """
 Roster generator and folder resetting module
 """
+
 import sorter_settings
 import os
 from pathlib import Path
@@ -51,7 +52,9 @@ else:
 sorted_files = os.listdir(f"{cwd}\\{sorter_settings.sorted_destination}\\")
 if len(sorted_files) > 0:
     for filename in sorted_files:
-        file_path = os.path.join(f"{cwd}\\{sorter_settings.sorted_destination}\\", filename)
+        file_path = os.path.join(
+            f"{cwd}\\{sorter_settings.sorted_destination}\\", filename
+        )
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
@@ -80,7 +83,9 @@ else:
     print("No files removed for unidentifiable folder: Length = 0")
 
 for team in comp_roster:
-    Path(f"{cwd}/{sorter_settings.sorted_destination}/{str(team)}").mkdir(parents=True, exist_ok=True)
+    Path(f"{cwd}/{sorter_settings.sorted_destination}/{str(team)}").mkdir(
+        parents=True, exist_ok=True
+    )
     print(f"Created folder for {team}")
 
 
@@ -93,7 +98,10 @@ for team in comp_roster:
             selected_file_list.append(file)
 
 for file in selected_file_list:
-    shutil.copy(f"{cwd}\{sorter_settings.library}\\{file}", f"{cwd}\\{sorter_settings.unsorted}\\")
+    shutil.copy(
+        f"{cwd}\{sorter_settings.library}\\{file}",
+        f"{cwd}\\{sorter_settings.unsorted}\\",
+    )
 
 
 print("Setup Complete!")
