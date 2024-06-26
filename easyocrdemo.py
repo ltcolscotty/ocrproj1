@@ -75,6 +75,5 @@ else:
                 3,
             )
 
-img.imshow()
-        
-time.wait(2)
+plt.imshow(img)
+plt.show()
