@@ -4,9 +4,9 @@ Demo of using easyocr to assist the automation of sorting photos for FRC
 
 ### Requirements:
 - Files may have any suffix readable by matplotlib. Recommended usage of:
-    - webp
-    - png
-    - jpg
+    - ``.webp``
+    - ``.png``
+    - ``.jpg``
 
 ### New required packages:
 - ``torch`` - Pytorch - GPU Acceleration (Files may be modified if ONLY CPUs will be used)
