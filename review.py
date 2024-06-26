@@ -21,7 +21,13 @@ non_id_path = f"{cwd}//{sorter_settings.non_IDable}"
 non_id_files = os.listdir(non_id_path)
 
 if len(non_id_files) > 0:
+
+    print(f"Reviewing: {len(non_id_files)} files")
+
     for file in non_id_files:
+        
+        print(f"File: {file}")
+
         result = reader.readtext(f"{cwd}//{sorter_settings.non_IDable}//{file}")
 
         # Initiate list for result collection
@@ -68,6 +74,9 @@ if len(non_id_files) > 0:
 
         plt.imshow(img)
         plt.show()
+
+        print("--- NEXT IMAGE ---")
+    print("--- END OF REVIEW ---")
 
 else:
     print("Folder seems empty")
