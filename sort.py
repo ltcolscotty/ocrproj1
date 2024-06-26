@@ -11,7 +11,7 @@ import shutil
 
 import sorter_settings
 
-comp_roster = os.listdir(f"{cwd}\\sorted_teams\\")
+comp_roster = os.listdir(f"{cwd}\\{sorter_settings.sorted_destination}\\")
 
 if torch.cuda.is_available():
     reader = easyocr.Reader(["en"], gpu=True)
@@ -21,10 +21,10 @@ else:
     reader = easyocr.Reader(["en"], gpu=False)
     print("using CPU, CUDA not available")
 
-unsorted_files_list = os.listdir(f"{cwd}\\unsorted_demo\\")
+unsorted_files_list = os.listdir(f"{cwd}\\{sorter_settings.unsorted}\\")
 for file in unsorted_files_list:
 
-    WORKING_IMAGE_PATH = f"{cwd}\\unsorted_demo\\{file}"
+    WORKING_IMAGE_PATH = f"{cwd}\\{sorter_settings.unsorted}\\{file}"
     result = reader.readtext(WORKING_IMAGE_PATH)
 
     # Initiate list for result collection
@@ -36,7 +36,7 @@ for file in unsorted_files_list:
     if not result:
         print("Empty Results List")
         shutil.copy(
-            f"{cwd}\\unsorted_demo\\{file}", f"{cwd}\\unidentifiable_demo\\{file}"
+            f"{cwd}\\{sorter_settings.unsorted}\\{file}", f"{cwd}\\{sorter_settings.non_IDable}\\{file}"
         )
     else:
         sorted_status = False
@@ -45,8 +45,8 @@ for file in unsorted_files_list:
             if str(result[index][1]).replace(' ', '').isdigit() and str(result[index][1]).replace(' ','') in comp_roster:
                 answer_list.append(str(result[index][1]).replace(' ',''))
                 shutil.copy(
-                    f"{cwd}\\unsorted_demo\\{file}",
-                    f"{cwd}\\sorted_teams\\{str(result[index][1]).replace(' ','')}\\{file}",
+                    f"{cwd}\\{sorter_settings.unsorted}\\{file}",
+                    f"{cwd}\\{sorter_settings.sorted_destination}\\{str(result[index][1]).replace(' ','')}\\{file}",
                 )
                 sorted_status = True
             else:
@@ -54,7 +54,7 @@ for file in unsorted_files_list:
 
         if not sorted_status:
             shutil.copy(
-                f"{cwd}\\unsorted_demo\\{file}", f"{cwd}\\unidentifiable_demo\\{file}"
+                f"{cwd}\\{sorter_settings.unsorted}\\{file}", f"{cwd}\\{sorter_settings.non_IDable}\\{file}"
             )
 
 print("Finished sorting!")
