@@ -89,7 +89,7 @@ selected_file_list = list()
 
 for team in comp_roster:
     for file in file_list:
-        if file.startswith(f"{str(team)}"):
+        if file.startswith(f"{str(team)}_"):
             selected_file_list.append(file)
 
 for file in selected_file_list:
