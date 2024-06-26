@@ -82,3 +82,8 @@ After [configuring for usage](#how-to-configure-for-usage)
 4. In one image, go through the results. If a result matches a team in the team roster, copy the image to that team's image folder
 5. If the results list is empty or contains number sequences not in the team roster, the team is unidentifiable by the program
 
+# Todo
+
+- Conduct statistical analysis on effectiveness of the program running repeated demos (Preferably at least 100 automated cycles) to obtain estimated overall accuracy and attempt rate
+    - May require restructuring to class based structure to make OA and AR collectable by a program
+    
