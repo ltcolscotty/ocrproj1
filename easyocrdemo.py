@@ -4,6 +4,8 @@ import os
 
 cwd = os.getcwd()
 
+import sorter_settings
+
 import torch
 import easyocr
 import cv2
@@ -15,7 +17,7 @@ import time
 
 file = input("Input file name relative to image_library: ")
 
-library = os.listdir(f"{cwd}\image_library\\")
+library = os.listdir(f"{cwd}\{sorter_settings.library}\\")
 
 if torch.cuda.is_available():
     reader = easyocr.Reader(["en"], gpu=True)
@@ -27,10 +29,10 @@ else:
 
 # Set image here
 if file in library:
-    IMAGE_PATH = f"{cwd}\image_library\\{file}"
+    IMAGE_PATH = f"{cwd}\{sorter_settings.library}\\{file}"
 else:
     print("File not recognized, using default image. Remeber to include file suffix.")
-    IMAGE_PATH = f"{cwd}\image_library\\1_0.webp"
+    IMAGE_PATH = f"{cwd}\{sorter_settings.library}\\1_0.webp"
 result = reader.readtext(IMAGE_PATH)
 
 # Initiate list for result collection

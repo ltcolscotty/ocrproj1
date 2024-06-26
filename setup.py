@@ -1,12 +1,10 @@
 """
 Roster generator and folder resetting module
 """
-
+import sorter_settings
 import os
-
 from pathlib import Path
 import shutil
-
 import random
 
 cwd = os.getcwd()
@@ -14,7 +12,7 @@ cwd = os.getcwd()
 # Number of competitors
 comp_num = 35
 comp_roster = list()
-file_list = os.listdir(f"{cwd}\image_library\\")
+file_list = os.listdir(f"{cwd}\{sorter_settings.library}\\")
 
 for x in range(comp_num):
     valid_team = False
@@ -34,10 +32,10 @@ for x in range(comp_num):
 print("Generated new roster!")
 
 # Clear files in unsorted folder
-unsorted_files = os.listdir(f"{cwd}\\unsorted_demo\\")
+unsorted_files = os.listdir(f"{cwd}\\{sorter_settings.unsorted}\\")
 if len(unsorted_files) > 0:
     for filename in unsorted_files:
-        file_path = os.path.join(f"{cwd}\\unsorted_demo\\", filename)
+        file_path = os.path.join(f"{cwd}\\{sorter_settings.unsorted}\\", filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
@@ -50,10 +48,10 @@ else:
     print("No files removed for unsorted files: Length = 0")
 
 # Clear files from sorted folder
-sorted_files = os.listdir(f"{cwd}\\sorted_teams\\")
+sorted_files = os.listdir(f"{cwd}\\{sorter_settings.sorted_destination}\\")
 if len(sorted_files) > 0:
     for filename in sorted_files:
-        file_path = os.path.join(f"{cwd}\\sorted_teams\\", filename)
+        file_path = os.path.join(f"{cwd}\\{sorter_settings.sorted_destination}\\", filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
@@ -66,10 +64,10 @@ else:
     print("No files removed for sorted folder: Length = 0")
 
 # Clear files from unidentifiable folder
-unidentifiable_files = os.listdir(f"{cwd}\\unidentifiable_demo\\")
+unidentifiable_files = os.listdir(f"{cwd}\\{sorter_settings.non_IDable}\\")
 if len(unidentifiable_files) > 0:
     for filename in unidentifiable_files:
-        file_path = os.path.join(f"{cwd}\\unidentifiable_demo\\", filename)
+        file_path = os.path.join(f"{cwd}\\{sorter_settings.non_IDable}\\", filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
                 os.unlink(file_path)
@@ -82,7 +80,7 @@ else:
     print("No files removed for unidentifiable folder: Length = 0")
 
 for team in comp_roster:
-    Path(f"{cwd}/sorted_teams/{str(team)}").mkdir(parents=True, exist_ok=True)
+    Path(f"{cwd}/{sorter_settings.sorted_destination}/{str(team)}").mkdir(parents=True, exist_ok=True)
     print(f"Created folder for {team}")
 
 
@@ -95,7 +93,7 @@ for team in comp_roster:
             selected_file_list.append(file)
 
 for file in selected_file_list:
-    shutil.copy(f"{cwd}\image_library\\{file}", f"{cwd}\\unsorted_demo\\")
+    shutil.copy(f"{cwd}\{sorter_settings.library}\\{file}", f"{cwd}\\{sorter_settings.unsorted}\\")
 
 
 print("Setup Complete!")

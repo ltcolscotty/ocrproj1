@@ -9,6 +9,8 @@ import easyocr
 import cv2
 import shutil
 
+import sorter_settings
+
 comp_roster = os.listdir(f"{cwd}\\sorted_teams\\")
 
 if torch.cuda.is_available():
