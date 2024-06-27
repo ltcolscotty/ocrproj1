@@ -45,7 +45,7 @@ Be sure to read [implementation essentials](#essentials-for-an-implementation)
 - Unidentifiable folder
 - Designated sorter program/package command
 - ``Sorter_settings.py`` is configured
-- Review.py, setup.py, evaluate.py, easyocrdemo.py, and the image library are deleted
+- Review.py, easyocrdemo.py, and the image library are deleted
 
 ## Theoretical usage at competition:
 After [configuring for usage](#how-to-configure-for-usage)
