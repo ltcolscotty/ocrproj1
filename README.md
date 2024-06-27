@@ -26,17 +26,8 @@ Demo of using easyocr to assist the automation of sorting photos for FRC
 ## How to run a demo:
 Be sure to read [demo essentials](#demo-essentials)
 
-1. Run ``setup.py``
-    - Sets up demo
-        - Clears previous demo content
-        - Sets up new folders
-        - Adds related team images to new folders
-2. Run ``sort.py``
-    - Primary program, sorts images (Method will be elaborated below)
-3. Run ``evaluate.py``
-    - Prints out results of program including attempts and accuracy
-4. (Optional) Run ``review.py``
-    - View images to see possible mistakes sorting may have made
+1. Modify the number of cycles you want to test in ``multitest.py``
+2. Run ``multitest.py``
 
 ## How to configure for usage:
 Be sure to read [implementation essentials](#essentials-for-an-implementation)
@@ -82,8 +73,4 @@ After [configuring for usage](#how-to-configure-for-usage)
 4. In one image, go through the results. If a result matches a team in the team roster, copy the image to that team's image folder
 5. If the results list is empty or contains number sequences not in the team roster, the team is unidentifiable by the program
 
-# Todo
-
-- Conduct statistical analysis on effectiveness of the program running repeated demos (Preferably at least 100 automated cycles) to obtain estimated overall accuracy and attempt rate
-    - May require restructuring to class based structure to make OA and AR collectable by a program
     
