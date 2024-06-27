@@ -1,11 +1,12 @@
 import torch
 import easyocr
 
-import setup
-import sort
-import evaluate
-
+import os
 import statistics
+
+import unified_procedure
+
+cwd = os.getcwd()
 
 if torch.cuda.is_available():
     reader = easyocr.Reader(["en"], gpu=True)
@@ -24,9 +25,9 @@ OR_data = list()
 
 for run in range(cycles):
     print(f"-----|Testing Cycle {run}|-----")
-    setup.setup_comp()
-    sort.sort_comp(reader)
-    test_result = evaluate.evaluate_test()
+    unified_procedure.setup_comp(cwd)
+    unified_procedure.sort_comp(reader, cwd)
+    test_result = unified_procedure.evaluate_test(cwd)
     AR_data.append(test_result[0])
     CA_data.append(test_result[1])
     OR_data.append(test_result[2])
