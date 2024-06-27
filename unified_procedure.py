@@ -13,6 +13,30 @@ import cv2
 import easyocr
 
 
+def clear_folder(cwd, folder_directory):
+    """
+    Clears folder
+
+    Args:
+    - ``cwd``: Current Working Directory
+    - ``folder_directory``: folder that you want to clear relative to ``cwd``
+    """
+    unsorted_files = os.listdir(f"{cwd}\\{folder_directory}\\")
+    if len(unsorted_files) > 0:
+        for filename in unsorted_files:
+            file_path = os.path.join(f"{cwd}\\{folder_directory}\\", filename)
+            try:
+                if os.path.isfile(file_path) or os.path.islink(file_path):
+                    os.unlink(file_path)
+                elif os.path.isdir(file_path):
+                    shutil.rmtree(file_path)
+            except Exception as e:
+                print("Failed to delete %s. Reason: %s" % (file_path, e))
+        print("Successfully cleared folder 'unsorted files'")
+    else:
+        print("No files removed for unsorted files: Length = 0")
+
+
 def setup_comp(cwd):
     """
     Sets up competition.
@@ -43,54 +67,13 @@ def setup_comp(cwd):
     print("Generated new roster!")
 
     # Clear files in unsorted folder
-    unsorted_files = os.listdir(f"{cwd}\\{sorter_settings.unsorted}\\")
-    if len(unsorted_files) > 0:
-        for filename in unsorted_files:
-            file_path = os.path.join(f"{cwd}\\{sorter_settings.unsorted}\\", filename)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print("Failed to delete %s. Reason: %s" % (file_path, e))
-        print("Successfully cleared folder 'unsorted files'")
-    else:
-        print("No files removed for unsorted files: Length = 0")
+    clear_folder(cwd, sorter_settings.unsorted)
 
     # Clear files from sorted folder
-    sorted_files = os.listdir(f"{cwd}\\{sorter_settings.sorted_destination}\\")
-    if len(sorted_files) > 0:
-        for filename in sorted_files:
-            file_path = os.path.join(
-                f"{cwd}\\{sorter_settings.sorted_destination}\\", filename
-            )
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print("Failed to delete %s. Reason: %s" % (file_path, e))
-        print("Successfully cleared folder 'sorted files'")
-    else:
-        print("No files removed for sorted folder: Length = 0")
+    clear_folder(cwd, sorter_settings.sorted_destination)
 
     # Clear files from unidentifiable folder
-    unidentifiable_files = os.listdir(f"{cwd}\\{sorter_settings.non_IDable}\\")
-    if len(unidentifiable_files) > 0:
-        for filename in unidentifiable_files:
-            file_path = os.path.join(f"{cwd}\\{sorter_settings.non_IDable}\\", filename)
-            try:
-                if os.path.isfile(file_path) or os.path.islink(file_path):
-                    os.unlink(file_path)
-                elif os.path.isdir(file_path):
-                    shutil.rmtree(file_path)
-            except Exception as e:
-                print("Failed to delete %s. Reason: %s" % (file_path, e))
-        print("Successfully cleared folder 'unidentifiable'")
-    else:
-        print("No files removed for unidentifiable folder: Length = 0")
+    clear_folder(cwd, sorter_settings.non_IDable)
 
     for team in comp_roster:
         Path(f"{cwd}/{sorter_settings.sorted_destination}/{str(team)}").mkdir(
