@@ -32,7 +32,7 @@ def clear_folder(cwd, folder_directory):
                     shutil.rmtree(file_path)
             except Exception as e:
                 print("Failed to delete %s. Reason: %s" % (file_path, e))
-        print("Successfully cleared folder 'unsorted files'")
+        print(f"Successfully cleared folder '{folder_directory}'")
     else:
         print("No files removed for unsorted files: Length = 0")
 
