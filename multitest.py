@@ -20,7 +20,7 @@ else:
     reader = easyocr.Reader(["en"], gpu=False)
     print("using CPU, CUDA not available")
 
-cycles = 75
+cycles = 5
 
 AR_data = list()
 CA_data = list()
