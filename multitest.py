@@ -32,6 +32,6 @@ for run in range(cycles):
     CA_data.append(test_result[1])
     OR_data.append(test_result[2])
 
-print(f"Avg Attempted Rate: {statistics.mean(AR_data)}")
-print(f"Avg Correct Attempted Rate: {statistics.mean(CA_data)}")
-print(f"Avg Overall Correctness Rate: {statistics.mean(OR_data)}")
+print(f"Avg Attempted Rate: {statistics.mean(AR_data)} | StdDev: {statistics.stdev(AR_data)}")
+print(f"Avg Correct Attempted Rate: {statistics.mean(CA_data)} | StdDev: {statistics.stdev(CA_data)}")
+print(f"Avg Overall Correctness Rate: {statistics.mean(OR_data)} | StdDev: {statistics.stdev(OR_data)}")
