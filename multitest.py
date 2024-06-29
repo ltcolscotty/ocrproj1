@@ -5,8 +5,12 @@ import os
 import statistics
 
 import unified_procedure
+import sorter_settings
 
 cwd = os.getcwd()
+
+for dir in sorter_settings.required_dirs:
+    os.makedirs(dir, exist_ok=True)
 
 if torch.cuda.is_available():
     reader = easyocr.Reader(["en"], gpu=True)

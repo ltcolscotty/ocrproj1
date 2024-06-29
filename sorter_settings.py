@@ -9,3 +9,6 @@ sorted_destination = 'sorted_teams'
 
 # Unidentifiable Folder
 non_IDable = 'unidentifiable_demo'
+
+#for setup
+required_dirs = [unsorted, sorted_destination, non_IDable]
