@@ -113,14 +113,15 @@ def sort_comp(reader: easyocr.Reader, cwd):
     for file in unsorted_files_list:
 
         WORKING_IMAGE_PATH = f"{cwd}\\{sorter_settings.unsorted}\\{file}"
+
         image = cv2.imread(WORKING_IMAGE_PATH)
-        cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) 
+        cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         result = reader.readtext(image)
 
         # Initiate list for result collection
         answer_list = list()
 
-        #img = cv2.imread(WORKING_IMAGE_PATH)
+        # img = cv2.imread(WORKING_IMAGE_PATH)
 
         # Print results
         if not result:
